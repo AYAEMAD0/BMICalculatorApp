@@ -18,9 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController birthDayController = TextEditingController();
   final TextEditingController heightController = TextEditingController();
   final TextEditingController weightController = TextEditingController();
-  GlobalKey<FormState> _key = GlobalKey();
-  late Gender selected=Gender.male;
-  late DataUserModel model;
+
+  final GlobalKey<FormState> _key = GlobalKey();
+
+  Gender selected = Gender.male; 
+  DateTime? selectedBirthDate;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,44 +45,125 @@ class _HomeScreenState extends State<HomeScreen> {
             key: _key,
             child: Column(
               children: [
-                CustomTextField(labal: 'Name', controller: nameController),
+                // Name
                 CustomTextField(
-                    labal: 'Birth Date', controller: birthDayController),
+                  labal: 'Name',
+                  controller: nameController,
+                  valid: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your name";
+                    }
+                    if (value.length < 3) {
+                      return "Name must be at least 3 characters";
+                    }
+                    return null;
+                  },
+                ),
+
+                // Birth
+                CustomTextField(
+                  labal: 'Birth Date',
+                  controller: birthDayController,
+                  onpress: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime(2000),
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime.now(),
+                    );
+                    if (pickedDate != null) {
+                      setState(() {
+                        selectedBirthDate = pickedDate;
+                        birthDayController.text =
+                            "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+                      });
+                    }
+                  },
+                  valid: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please select birth date";
+                    }
+                    return null;
+                  },
+                ),
+
+                // Gender
                 CustomGender(
                   onSelected: (val) {
                     selected = val;
                   },
                 ),
-                SizedBox(height: 20,),
+
+                const SizedBox(height: 20),
+
+                // Height
                 CustomTextField(
-                    labal: 'Your Height(Cm)', controller: heightController),
+                  labal: 'Your Height (cm)',
+                  controller: heightController,
+                  isIcon: true,
+                  valid: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your height";
+                    }
+                    final h = double.tryParse(value);
+                    if (h == null || h <= 0) {
+                      return "Height must be a positive number";
+                    }
+                    return null;
+                  },
+                ),
+
+                // Weight
                 CustomTextField(
-                    labal: 'Your Weight(kg)', controller: weightController),
+                  labal: 'Your Weight (kg)',
+                  controller: weightController,
+                  isIcon: true,
+                  valid: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your weight";
+                    }
+                    final w = double.tryParse(value);
+                    if (w == null || w <= 0) {
+                      return "Weight must be a positive number";
+                    }
+                    return null;
+                  },
+                ),
+
+                const SizedBox(height: 20),
+
+                // Button
                 CustomButton(
                   text: 'Calculate BMI',
                   onpress: () {
                     if (_key.currentState!.validate()) {
                       var infoPerson = DataUserModel(
-                          name: nameController.text,
-                          birthDay: birthDayController.text,
-                          height: double.parse(heightController.text),
-                          weight: double.parse(weightController.text),
-                          gender: model.gender);
+                        name: nameController.text,
+                        birthDay: selectedBirthDate!,
+                        height: double.parse(heightController.text),
+                        weight: double.parse(weightController.text),
+                        gender: selected,
+                      );
+
                       Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  DetailsScreen(model: infoPerson)));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailsScreen(model: infoPerson),
+                        ),
+                      );
+
+                      print('--------------------------------------');
+                      print('gender $selected');
+                      print('name ${nameController.text}');
+                      print('birth ${birthDayController.text}');
+                      print('birth ${selectedBirthDate!}');
+                      print('height ${heightController.text}');
+                      print('weight ${weightController.text}');
                     }
-                    print('--------------------------------------');
-                    print('gender $selected');
-                    print('name ${nameController.text}');
-                    print('birth ${birthDayController.text}');
-                    print('height ${heightController.text}');
-                    print('weight ${weightController.text}');
                   },
                 ),
-                SizedBox(height: 20,),
+
+                const SizedBox(height: 20),
               ],
             ),
           ),

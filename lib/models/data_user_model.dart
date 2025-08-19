@@ -1,6 +1,8 @@
+import 'package:age_calculator/age_calculator.dart';
+
 class DataUserModel {
   final String name;
-  final String birthDay;
+  final DateTime birthDay;
   final double height;
   final double weight;
   final Gender gender;
@@ -12,6 +14,8 @@ class DataUserModel {
     required this.weight,
     required this.gender,
   });
+  int get age => AgeCalculator.age(birthDay).years;
+
 }
 enum Gender {
   male,
