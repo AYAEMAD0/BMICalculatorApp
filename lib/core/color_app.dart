@@ -6,8 +6,9 @@ class ColorApp {
   static final Color color_purB=Color(0xff484783);
   static final Color color_white=Color(0xffFFFFFF);
   static final Color color_greenB=Color(0xff01502E);
-  static final Color color_purW=Color(0xffEBEDFC);
+  static final Color color_purW=Color(0xffB3B2EA);
   static final Color color_divider=Color(0xFFF8F9FF).withOpacity(0.65);
+  static final Color color_grey=Color(0xFF333333);
 
   
 

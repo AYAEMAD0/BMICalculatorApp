@@ -1,5 +1,4 @@
 import 'package:bmi/core/color_app.dart';
-import 'package:bmi/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,7 +20,6 @@ class HomeScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(children: [
-          CustomTextField(labal: 'Name',),
         ],),
       ),
     );

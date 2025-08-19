@@ -1,8 +1,8 @@
-import 'package:bmi/screens/home_screen.dart';
+import 'package:bmi/screens/home_screen/home_screen.dart';
 import 'package:bmi/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../core/color_app.dart';
+import '../../core/color_app.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -14,8 +14,7 @@ class OnboardingScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-
-
+            //container end text and button
             Positioned(
               bottom: 0,
               child: Container(
@@ -73,55 +72,31 @@ class OnboardingScreen extends StatelessWidget {
             ),
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Positioned(
-//               top:10,
-//               left: 0,
-//               right: 0,
-//                 child: SvgPicture.asset('assets/images/svgs/onboarding1.svg',height: 100,)),
-
-
-
-
             Positioned(
               top:65,
               left: 0,
               right: 0,
                 child: SvgPicture.asset('assets/images/svgs/onboarding1.svg',height: 205,)),
 
-
+            // fruits and vegatables
             Positioned(
                 top:190,
                 right: 28,
                 child: SvgPicture.asset('assets/images/svgs/onboarding3.svg',height: 185,)),
 
-
+            //man
             Positioned(
               top:140,
               left: 30,
                 child: SvgPicture.asset('assets/images/svgs/onboarding2.svg',height: 230,)),
 
-
+    //line in top
     Positioned(
               top:65,
               left: 30,
                 child: SvgPicture.asset('assets/images/svgs/line_up.svg',height: 60,)),
 
-
+    //line bottom
     Positioned(
               top:335,
               right:25,
@@ -138,12 +113,3 @@ class OnboardingScreen extends StatelessWidget {
 }
 
 
-
-//  SizedBox(
-//               height: 30,
-//             ),
-//             SvgPicture.asset(
-//               'assets/images/svgs/onboarding.svg',
-//               width: 300,
-//               height: 100,
-//             ),

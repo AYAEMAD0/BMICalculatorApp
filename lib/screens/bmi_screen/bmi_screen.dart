@@ -1,6 +1,7 @@
 
-import 'package:bmi/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../home_screen/home_screen.dart';
 
 class BmiScreen extends StatelessWidget {
   const BmiScreen({super.key});
@@ -9,7 +10,7 @@ class BmiScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
      debugShowCheckedModeBanner: false,
-      home: const OnboardingScreen(),
+      home: const HomeScreen(),
     );
   }
 }
