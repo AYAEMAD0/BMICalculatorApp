@@ -42,8 +42,8 @@ class OnboardingScreen extends StatelessWidget {
                       Text(
                         'It takes just 30 seconds – and your health is worth it!',
                         style: TextStyle(
-                            color: ColorApp.color_white.withOpacity(0.90),
-                            fontSize: 20,
+                            color: ColorApp.color_white.withOpacity(0.60),
+                            fontSize: 18,
                             fontWeight: FontWeight.w400),
                       ),
                       SizedBox(
@@ -71,7 +71,7 @@ class OnboardingScreen extends StatelessWidget {
               ),
             ),
 
-
+            //Scale for measuring weight
             Positioned(
               top:65,
               left: 0,
@@ -81,12 +81,12 @@ class OnboardingScreen extends StatelessWidget {
             // fruits and vegatables
             Positioned(
                 top:190,
-                right: 28,
+                right: 30,
                 child: SvgPicture.asset('assets/images/svgs/onboarding3.svg',height: 185,)),
 
             //man
             Positioned(
-              top:140,
+              top:137,
               left: 30,
                 child: SvgPicture.asset('assets/images/svgs/onboarding2.svg',height: 230,)),
 
@@ -98,8 +98,8 @@ class OnboardingScreen extends StatelessWidget {
 
     //line bottom
     Positioned(
-              top:335,
-              right:25,
+              top:330,
+              right:23,
                 child: SvgPicture.asset('assets/images/svgs/line_under.svg',height: 50,)),
 
 
