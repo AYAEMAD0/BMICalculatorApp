@@ -141,8 +141,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       var infoPerson = DataUserModel(
                         name: nameController.text,
                         birthDay: selectedBirthDate!,
-                        height: double.parse(heightController.text),
-                        weight: double.parse(weightController.text),
+                        height: int.parse(heightController.text),
+                        weight: int.parse(weightController.text),
                         gender: selected,
                       );
 
@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
 
                       print('--------------------------------------');
-                      print('gender $selected');
+                      print('gender ${selected.name}');
                       print('name ${nameController.text}');
                       print('birth ${birthDayController.text}');
                       print('birth ${selectedBirthDate!}');

@@ -1,19 +1,20 @@
+import 'package:bmi/data/bmi_response.dart';
 import 'package:bmi/models/data_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../core/color_app.dart';
 
 class CustomContainerInfo extends StatelessWidget {
-  const CustomContainerInfo({super.key,required this.model});
+  const CustomContainerInfo({super.key, required this.model, required this.response});
   final DataUserModel model;
+  final BmiResponse response;
   @override
   Widget build(BuildContext context) {
-    return Column(
+          return Column(
             children: [
               Container(
                 padding: EdgeInsets.all(10),
                 width: double.infinity,
-                height: 300,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: ColorApp.color_secondary),
@@ -23,11 +24,8 @@ class CustomContainerInfo extends StatelessWidget {
                       flex: 2,
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: 30,
-                          ),
                           Align(
-                            alignment: Alignment.topLeft,
+                            alignment: Alignment.topCenter,
                             child: Text(
                               model.name,
                               style: TextStyle(
@@ -40,7 +38,7 @@ class CustomContainerInfo extends StatelessWidget {
                             height: 6,
                           ),
                           Align(
-                            alignment: Alignment.topLeft,
+                            alignment: Alignment.topCenter,
                             child: Text(
                               'A ${model.age} years old ${model.gender.name}.',
                               style: TextStyle(
@@ -50,43 +48,44 @@ class CustomContainerInfo extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 10,
                           ),
                           Text(
-                            '16.5', ///calcualator??
+                            '${response.bmi.toStringAsFixed(2)}',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: ColorApp.color_white,
-                                fontSize: 30,
+                                fontSize: 25,
                                 fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            height: 3,
+                            height: 5,
                           ),
                           Text(
                             'BMI Calc',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: ColorApp.color_white,
-                                fontSize: 25,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w500),
                           ),
                           SizedBox(
                             height: 20,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Column(
                                 children: [
                                   Text(
-                                   '${model.height} cm',
+                                    '${model.height} cm',
                                     style: TextStyle(
                                         color: ColorApp.color_white,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(
-                                    height: 6,
+                                    height: 8,
                                   ),
                                   Text(
                                     'Height',
@@ -97,7 +96,9 @@ class CustomContainerInfo extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(width: 10,),
+                              SizedBox(
+                                width: 10,
+                              ),
                               SizedBox(
                                 height: 50,
                                 child: VerticalDivider(
@@ -105,7 +106,9 @@ class CustomContainerInfo extends StatelessWidget {
                                   thickness: 2,
                                 ),
                               ),
-                              SizedBox(width: 10,),
+                              SizedBox(
+                                width: 10,
+                              ),
                               Column(
                                 children: [
                                   Text(

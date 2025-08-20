@@ -3,8 +3,8 @@ import 'package:age_calculator/age_calculator.dart';
 class DataUserModel {
   final String name;
   final DateTime birthDay;
-  final double height;
-  final double weight;
+  final int height;
+  final int weight;
   final Gender gender;
 
   DataUserModel({
