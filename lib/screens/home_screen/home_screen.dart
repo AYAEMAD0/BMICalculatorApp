@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,//doesnot change color appbar in scroll
         title: Text(
           'BMI',
           style: TextStyle(
